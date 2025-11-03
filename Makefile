@@ -1,12 +1,15 @@
+# Makefile com comandos úteis para documentação
 
-env:
-	@source $(poetry env info --path)/bin/activate
+.PHONY: docs docs-serve docs-deploy
 
-install:
-	poetry install
-
-run:
-	poetry run python -c "import django; django.setup(); print('Django OK')"
-
+## 🛠️ Instala dependências de documentação (MkDocs)
 docs:
-	poetry run mkdocs serve
+	poetry add mkdocs mkdocs-material --group docs
+
+## ▶️ Roda o servidor local da documentação
+docs-serve:
+	mkdocs serve
+
+## 🚀 Publica a documentação no GitHub Pages
+docs-deploy:
+	mkdocs gh-deploy
