@@ -1,31 +1,26 @@
-###########################
-# core/settings/base.py
-###########################
 """
 Configurações base do Django para o projeto.
-Usado como base para dev.py e prod.py.
+Usado como base para os ambientes de desenvolvimento e produção.
 """
-
 
 from pathlib import Path
 from decouple import config
 
-
-# Diretório base do projeto (3 níveis acima)
+# ---------------------------------------------------------------------
+# Caminho base do projeto (ex: /home/user/projeto/)
+# ---------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 # Segurança
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 SECRET_KEY = config("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1,localhost").split(",")
 
-
-# -----------------------------------------------------------------------------
-# Apps instalados
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
+# Aplicativos instalados
+# ---------------------------------------------------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,10 +32,9 @@ INSTALLED_APPS = [
     "movies",
 ]
 
-
-# -----------------------------------------------------------------------------
-# Middlewares
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
+# Middleware
+# ---------------------------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -51,18 +45,19 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 # URLs e WSGI
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 ROOT_URLCONF = "core.urls"
 WSGI_APPLICATION = "core.wsgi.application"
 
-
+# ---------------------------------------------------------------------
+# Templates
+# ---------------------------------------------------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],  # pasta raiz de templates (opcional)
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -75,26 +70,30 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "core.wsgi.application"
-
-
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 # Internacionalização
-# -----------------------------------------------------------------------------
-LANGUAGE_CODE = "pt-br"
-TIME_ZONE = "America/Sao_Paulo"
-USE_I18N = True
-USE_TZ = True
-
-
-# -----------------------------------------------------------------------------
-# Arquivos estáticos
-# -----------------------------------------------------------------------------
+# ---------------------------------------------------------------------
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Belem"
 USE_I18N = True
 USE_TZ = True
 
+# ---------------------------------------------------------------------
+# Arquivos estáticos
+# ---------------------------------------------------------------------
 STATIC_URL = "static/"
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+
+
+# -----------------------------------------------------------------------------
+# Arquivos de mídia (uploads de imagens, vídeos etc.)
+# -----------------------------------------------------------------------------
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+
+# ---------------------------------------------------------------------
+# Configuração padrão de chave primária
+# ---------------------------------------------------------------------
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

@@ -12,6 +12,7 @@ Django = "^4.2"
 python-decouple = "^3.8"
 mkdocs = "^1.5"
 mkdocs-material = "^9.5"
+pillow = "^12.0.0"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.0"

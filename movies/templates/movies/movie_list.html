@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Filmes</h1>
+  <ul>
+    {% for movie in movies %}
+      <li><a href="{{ movie.get_absolute_url }}">{{ movie.title }} ({{ movie.release_year }})</a></li>
+    {% empty %}
+      <li>Nenhum filme cadastrado.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

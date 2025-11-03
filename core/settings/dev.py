@@ -1,19 +1,18 @@
-###########################
-# core/settings/dev.py
-###########################
 """
 Configurações para ambiente de DESENVOLVIMENTO.
 """
 
+from .base import *  # Importa todas as configurações base
 
-from .base import BASE_DIR
-
-
+# -----------------------------------------------------------------------------
+# Segurança
+# -----------------------------------------------------------------------------
 DEBUG = True
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]  # Permite acesso de qualquer host em dev
 
-
-# Banco de dados SQLite para desenvolvimento
+# -----------------------------------------------------------------------------
+# Banco de dados local (SQLite)
+# -----------------------------------------------------------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
