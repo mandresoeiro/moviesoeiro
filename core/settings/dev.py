@@ -6,7 +6,7 @@ Configurações para ambiente de DESENVOLVIMENTO.
 """
 
 
-from .base import *
+from .base import BASE_DIR
 
 
 DEBUG = True
