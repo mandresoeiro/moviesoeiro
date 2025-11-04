@@ -6,6 +6,7 @@ Usado como base para os ambientes de desenvolvimento e produção.
 from pathlib import Path
 from decouple import config
 
+
 # ---------------------------------------------------------------------
 # Caminho base do projeto (ex: /home/user/projeto/)
 # ---------------------------------------------------------------------
@@ -82,6 +83,7 @@ USE_TZ = True
 # Arquivos estáticos
 # ---------------------------------------------------------------------
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 

@@ -2,7 +2,7 @@
 Configurações para ambiente de DESENVOLVIMENTO.
 """
 
-from .base import *  # Importa todas as configurações base
+from .base import * # Importe explicitamente BASE_DIR
 
 # -----------------------------------------------------------------------------
 # Segurança

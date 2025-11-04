@@ -8,15 +8,22 @@ from .models import Movie
 # 🎬 View baseada em classe para listar todos os filmes
 class MovieListView(ListView):
     model = Movie  # Modelo que será listado
-    template_name = "movies/movie_list.html"  # Caminho do template usado para renderizar
-    context_object_name = "movies"  # Nome da variável no template (em vez de 'object_list')
+    template_name = (
+        "movies/movie_list.html"
+    )  # Caminho do template usado para renderizar
+    context_object_name = (
+        "movies"  # Nome da variável no template (em vez de 'object_list')
+    )
 
 
 # 🎥 View baseada em classe para exibir detalhes de um filme
 class MovieDetailView(DetailView):
     model = Movie  # Modelo a ser detalhado
-    template_name = "movies/movie_detail.html"  # Caminho do template de detalhes
-    context_object_name = "movie"  # Nome da variável no template (em vez de 'object')
+    template_name = (
+        "movies/movie_detail.html"  # Caminho do template de detalhes
+    )
+    # Nome da variável no template (em vez de 'object')
+    context_object_name = "movie"
     slug_field = "slug"  # Campo usado para buscar o objeto na URL
     slug_url_kwarg = "slug"  # Nome do parâmetro na URL
 
@@ -24,7 +31,9 @@ class MovieDetailView(DetailView):
 #TODO - DICAS
 ## Views com Django Genéricas
 
-# O Django fornece views genéricas para acelerar a criação de funcionalidades comuns. No caso do app `movies`, usamos duas:
+# O Django fornece views genéricas para acelerar a
+# criação de funcionalidades comuns; no caso do app
+# `movies`, usamos duas:
 
 ### MovieListView
 
@@ -40,3 +49,10 @@ class MovieDetailView(DetailView):
 # - Usa o template `movie_detail.html`
 # - O filme é recuperado pela slug da URL
 # - No template, o filme está disponível na variável `movie`
+
+
+# TODO 
+
+    # def MovieListView(request):
+    #     movies = Movie.objects.all()
+    
